@@ -85,6 +85,11 @@ aside li a svg {
    margin: 15px;
 }
 
+aside li a svg:active,
+aside li a svg:hover {
+   transform: scale(1.5);
+}
+
 aside li a svg:active *,
 aside li a svg:hover * {
    fill: #d1a954;
@@ -126,8 +131,8 @@ nav li:active,
 nav li:hover,
 header span:active,
 header span:hover {
-   padding-bottom: 5px;
    border-bottom: 3px solid rgb(209, 169, 84);
+   transform: scale(1.5);
 }
 .first-screen_content {
    margin: 5% 0;
@@ -171,6 +176,7 @@ button {
    text-align: center;
    text-transform: uppercase;
    padding: 2% 2%;
+   box-shadow: inset 0px 0px 10px 5px #444444;
 }
 .first-screen_slider {
    display: flex;
@@ -370,12 +376,30 @@ ul.projects_gallery li {
    position: relative;
    width: 100%;
 }
+.ellipse_992 {
+   display: none;
+}
+
+.ellipse,
+.loupe {
+   top: calc(50% - 50px);
+   left: calc(50% - 50px);
+   fill-opacity: 0;
+   position: absolute;
+}
+
+.loupe {
+   z-index: 5;
+   top: calc(50% - 15px);
+   left: calc(50% - 15px);
+}
 
 .projects_gallery p {
    font-weight: bold;
    text-transform: uppercase;
    position: absolute;
    margin: 8%;
+   z-index: 3;
 }
 
 p.horisontal {
@@ -389,12 +413,12 @@ p.vertical {
    bottom: 0;
 }
 
-ul.projects_gallery li:active,
-ul.projects_gallery li:hover {
-   background: url(images/loupe.svg), url(images/Ellipse.svg);
-   background-size: 9%, 25%;
-   background-position: center, center;
-   background-repeat: no-repeat;
+ul.projects_gallery li:active div.ellipse,
+ul.projects_gallery li:hover div.ellipse,
+ul.projects_gallery li:active div.loupe,
+ul.projects_gallery li:hover div.loupe {
+   fill-opacity: 1;
+   transition: 1s linear;
 }
 
 ul.projects_gallery li:active img,
@@ -405,7 +429,9 @@ ul.projects_gallery li:hover img {
 
 ul.projects_gallery li:active p,
 ul.projects_gallery li:hover p {
-   display: none;
+   /* display: none; */
+   transition: 1s linear;
+   opacity: 0;
 }
 
 @media (max-width: 992px) {
@@ -432,12 +458,27 @@ ul.projects_gallery li:hover p {
       object-fit: none;
    }
 
-   ul.projects_gallery li:nth-child(2):active,
-   ul.projects_gallery li:nth-child(2):hover {
-      background: url(images/loupe.svg), url(images/Ellipse_992.svg);
-      background-size: 15%, 40%;
-      background-position: 95% 50%, right;
-      background-repeat: no-repeat;
+   ul.projects_gallery li:nth-child(2) div.ellipse_992 {
+      display: block;
+      position: absolute;
+      top: calc(50% - 50px);
+      right: 0px;
+      fill-opacity: 0;
+      z-index: 4;
+   }
+
+   ul.projects_gallery li:nth-child(2) div.loupe {
+      left: calc(85%);
+   }
+
+   ul.projects_gallery li:nth-child(2):active div.ellipse_992,
+   ul.projects_gallery li:nth-child(2):hover div.ellipse_992 {
+      transition: 1s linear;
+      fill-opacity: 1;
+   }
+
+   ul.projects_gallery li:nth-child(2) div.ellipse {
+      display: none;
    }
 }
 
@@ -482,12 +523,52 @@ ul.projects_gallery li:hover p {
 }
 .raiting_stars {
    width: 50%;
+
    /* border: 1px solid rgb(255, 0, 140); */
 }
-
-.raiting_stars img {
+.stars {
+   display: flex;
+   justify-content: flex-start;
+}
+.raiting_stars div.stars :only-child {
    margin-right: 25px;
    margin-bottom: 25px;
+}
+
+.stars :nth-child(1) svg * {
+   animation: star 2s infinite;
+   animation-timing-function: steps(3, end);
+}
+.stars :nth-child(2) svg * {
+   animation: star 2s infinite;
+   animation-delay: 0.4s;
+   animation-timing-function: steps(3, end);
+}
+.stars :nth-child(3) svg * {
+   animation: star 2s infinite;
+   animation-delay: 0.8s;
+   animation-timing-function: steps(3, end);
+}
+.stars :nth-child(4) svg * {
+   animation: star 2s infinite;
+   animation-delay: 1.2s;
+   animation-timing-function: steps(3, end);
+}
+.stars :nth-child(5) svg * {
+   animation: star 2s infinite;
+   animation-delay: 1.6s;
+   animation-timing-function: steps(3, end);
+}
+
+@keyframes star {
+   from {
+      fill-opacity: 1;
+      /* fill: orange; */
+   }
+   to {
+      fill-opacity: 0.2;
+      /* fill: #d1a954; */
+   }
 }
 
 .raiting_stars p {
@@ -530,15 +611,36 @@ ul.projects_gallery li:hover p {
    flex-wrap: wrap;
 }
 
-.partners_content img {
+.partners_content div.gasprom {
    flex: calc(100% / 4 - 20px * 2);
    margin: 20px;
    margin-bottom: 5%;
 }
 
+.gasprom:first-child svg :last-child {
+   animation: gas 2s infinite linear alternate;
+}
+
+@keyframes gas {
+   from {
+      fill: #d1a954;
+   }
+
+   20% {
+      fill: orange;
+   }
+   40% {
+      fill: white;
+   }
+
+   to {
+      fill: rgb(18, 124, 223);
+   }
+}
+
 @media (max-width: 992px) {
-   .partners_content img:first-child,
-   .partners_content img:last-child {
+   .partners_content div.gasprom:nth-child(7),
+   .partners_content div.gasprom:nth-child(8) {
       display: none;
    }
    .partners_content {
@@ -628,6 +730,7 @@ ul.projects_gallery li:hover p {
    color: #ffffff;
    justify-content: flex-end;
    align-items: flex-end;
+   box-shadow: inset 0px 0px 10px 5px #444444;
 }
 
 .contacts-form p {
@@ -641,7 +744,7 @@ ul.projects_gallery li:hover p {
    margin-right: 5%;
 }
 
-.contacts_bottom {
+.contacts_button {
    display: flex;
    width: 100%;
    flex-direction: row-reverse;
@@ -674,7 +777,7 @@ ul.projects_gallery li:hover p {
    .adreses p {
       text-align: end;
    }
-   .contacts_bottom {
+   .contacts_button {
       margin-bottom: 5%;
    }
    .contacts {
