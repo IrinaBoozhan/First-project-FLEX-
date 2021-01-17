@@ -10,27 +10,14 @@
    margin-block-end: 0em;
 }
 body {
-   max-width: 100%;
+   min-width: 100vh;
    font-family: "Open Sans Condensed";
    color: #fff;
    font-stretch: ultra-condensed;
    background-color: rgba(51, 51, 51, 1);
 }
-
-aside {
+.main {
    display: flex;
-   flex-direction: column-reverse;
-   justify-content: flex-start;
-   align-items: center;
-   width: 8%;
-   padding-bottom: 5%;
-   background: rgba(51, 51, 51, 0.75);
-}
-main {
-   display: flex;
-   /* 
-   min-height: 600px;*/
-   /* max-height: 100%; */
    min-width: 100%;
    background: linear-gradient(0deg, rgba(51, 51, 51, 0.1), rgba(51, 51, 51, 0.1)),
       url(images/First-screen.png) no-repeat;
@@ -38,18 +25,24 @@ main {
    background-size: 100% 100%;
 }
 
-@media (min-width: 768px) {
+section.contacts {
+   display: flex;
+   flex-direction: column-reverse;
+   justify-content: space-around;
+   align-items: center;
+   width: 8%;
+   background: rgba(51, 51, 51, 0.75);
+}
+
+@media (min-width: 769px) {
    .burger {
       display: none;
    }
 }
 /*     */
-/*                */
-/*                           */
-/*                */
-/*     */
+
 @media (max-width: 768px) {
-   aside {
+   section.contacts {
       display: none;
    }
 
@@ -58,7 +51,7 @@ main {
    }
 
    .burger {
-      background-color: rgba(51, 51, 51, 1);
+      background-color: rgba(51, 51, 51, 0);
       width: 100vh;
       padding: 25px;
    }
@@ -161,6 +154,13 @@ main {
       font-size: 16px;
       width: 300px;
    }
+   #check-menu:hover ~ .first,
+   #check-menu:hover ~ .second,
+   #check-menu:hover ~ .third,
+   #check-menu:hover ~ .fourth {
+      background-color: #d1a954;
+      transform: scale(1.2);
+   }
 
    #check-menu:checked ~ .first {
       display: none;
@@ -177,7 +177,7 @@ main {
    #check-menu:checked ~ .fourth {
       display: none;
    }
-   .soc {
+   .social {
       margin: 0 80px;
       display: grid;
       grid-template-columns: 45px 45px;
@@ -186,13 +186,9 @@ main {
 }
 
 /*     */
-/*                */
-/*                           */
-/*                */
-/*     */
 
 @media (max-width: 992px) {
-   main {
+   .main {
       background: url(images/first-screen_992.png) no-repeat;
       background-position: center;
       background-size: 100% 100%;
@@ -206,7 +202,7 @@ main {
    min-height: 600px;
    width: 100%;
 }
-aside span::before {
+.contacts span::before {
    content: "";
    width: 80px;
    height: 3px;
@@ -216,8 +212,24 @@ aside span::before {
    margin-bottom: 70px;
    margin-top: 50px;
 }
-aside span {
-   margin: 0 0 20px 0;
+
+@media (min-width: 992px) {
+   .contacts span::before {
+      width: 90px;
+      margin-bottom: 100px;
+   }
+}
+
+@media (min-width: 1500px) {
+   .contacts span::before {
+      width: 120px;
+      margin-bottom: 140px;
+   }
+}
+
+.contacts span {
+   /* margin: 0 0 20px 0; */
+   padding-bottom: 50%;
    font-weight: 700;
    font-size: 18px;
    line-height: 25px;
@@ -228,24 +240,24 @@ aside span {
    transform: rotate(180deg);
 }
 
-aside ul {
+.contacts ul {
    display: flex;
    flex-direction: column-reverse;
-   justify-content: center;
+   justify-content: flex-start;
    align-items: center;
 }
 
-aside li a svg {
+.contacts li a svg {
    margin: 15px;
 }
 
-aside li a svg:active,
-aside li a svg:hover {
+.contacts li a svg:active,
+.contacts li a svg:hover {
    transform: scale(1.5);
 }
 
-aside li a svg:active *,
-aside li a svg:hover * {
+.contacts li a svg:active *,
+.contacts li a svg:hover * {
    fill: #d1a954;
    fill-opacity: 1;
 }
@@ -254,12 +266,13 @@ header {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   width: 90%;
+   width: 93%;
    font-weight: 700;
    text-transform: uppercase;
    font-size: 18px;
    letter-spacing: 10%;
    margin-top: 5%;
+   padding-left: 7%;
 }
 nav {
    width: 75%;
@@ -286,7 +299,7 @@ nav li:hover,
 header span:active,
 header span:hover {
    border-bottom: 3px solid rgb(209, 169, 84);
-   transform: scale(1.5);
+   transform: scale(1.2);
 }
 .first-screen_content {
    margin: 5% 0;
@@ -298,7 +311,6 @@ header span:hover {
 }
 .first-screen_text {
    width: 50%;
-
    display: flex;
    flex-direction: column;
 }
@@ -381,7 +393,7 @@ div.first-screen_slider-next :last-child::after {
 }
 
 @media (max-width: 992px) {
-   aside {
+   .contacts {
       width: 15%;
    }
 
@@ -400,6 +412,7 @@ div.first-screen_slider-next :last-child::after {
    }
    header span {
       justify-content: center;
+      margin-left: -15%;
       margin-top: 5%;
       padding-bottom: 5px;
       border-bottom: 3px solid rgba(209, 169, 84, 0);
@@ -416,6 +429,41 @@ div.first-screen_slider-next :last-child::after {
 
    .first-screen_slider-img {
       display: none;
+   }
+}
+
+@media (max-width: 768px) {
+   .burger {
+      position: absolute;
+      top: 8px;
+      left: 30px;
+   }
+
+   header {
+      width: 100%;
+      position: relative;
+   }
+
+   header span {
+      position: absolute;
+      top: 0px;
+      right: 40px;
+      margin-top: 0;
+      margin-right: 0;
+   }
+
+   .first-screen_content {
+      width: 100%;
+   }
+
+   .first-screen_text {
+      display: flex;
+   }
+
+   .first-screen_text h1,
+   .first-screen_text p {
+      width: 85%;
+      justify-content: center;
    }
 }
 
@@ -500,6 +548,16 @@ div.about_numbers span {
    }
    .about_numbers {
       width: auto;
+   }
+}
+
+@media (max-width: 768px) {
+   .about-content {
+      width: 90%;
+      justify-content: space-between;
+   }
+   .about-text {
+      width: 68%;
    }
 }
 
@@ -763,15 +821,20 @@ ul.projects_gallery li:hover p {
    display: flex;
    width: 60%;
    flex-wrap: wrap;
+   justify-content: center;
 }
 
 .partners_content div.gasprom {
-   flex: calc(100% / 4 - 20px * 2);
+   /* flex: calc(100% / 4 - 20px * 2); */
+   justify-content: center;
    margin: 20px;
-   margin-bottom: 5%;
+   margin-bottom: 10%;
+}
+.gasprom:first-child svg :last-child {
+   animation: gas 2s infinite linear alternate;
 }
 
-.gasprom:first-child svg :last-child {
+.gasprom:last-child svg :last-child {
    animation: gas 2s infinite linear alternate;
 }
 
@@ -800,10 +863,36 @@ ul.projects_gallery li:hover p {
    .partners_content {
       width: 75%;
    }
+
+   .gasprom:nth-child(6) svg :last-child {
+      animation: gas 2s infinite linear alternate;
+   }
 }
+
+@media (max-width: 768px) {
+   .partners_content {
+      width: 95%;
+   }
+}
+
+@media (max-width: 576px) {
+   .partners_content {
+      width: 80%;
+   }
+
+   .partners_content div.gasprom:nth-child(5),
+   .partners_content div.gasprom:nth-child(6) {
+      display: none;
+   }
+
+   .gasprom:nth-child(4) svg :last-child {
+      animation: gas 2s infinite linear alternate;
+   }
+}
+
 /* Контактная форма */
 
-.contacts {
+.contacts_form {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -829,7 +918,7 @@ ul.projects_gallery li:hover p {
    letter-spacing: 0.05em;
    text-transform: uppercase;
    margin-right: 3%;
-   width: 25%;
+   width: 30%;
    /* border: 1px solid rgb(128, 0, 117); */
 }
 .contacts_info p {
@@ -837,8 +926,8 @@ ul.projects_gallery li:hover p {
 }
 .contacts-form {
    display: flex;
-   flex-direction: column;
-   width: 75%;
+   flex-direction: row;
+   width: 65%;
    /* border: 1px solid rgb(0, 128, 53); */
 }
 .contacts-form input,
@@ -853,23 +942,32 @@ ul.projects_gallery li:hover p {
    border: 1px solid #616161;
    box-sizing: border-box;
 }
-.contacts-form input[type]:not([type="submit"]) {
-   margin: 0 3% 3% 0;
-   width: 25%;
-}
 .contacts-text {
    display: flex;
-   width: 100%;
-   flex-direction: column;
-   height: 135px;
-   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: space-between;
+   height: 100px;
+   margin-bottom: 5%;
+   /* flex-wrap: wrap; */
    /* border: 1px solid white; */
 }
-.contacts-form textarea {
-   width: 40%;
+.name-tel,
+.company-email {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
    height: 100px;
+}
+
+.contacts-form input[type]:not([type="submit"]) {
+   width: 90%;
+   height: 35px;
+}
+
+.contacts-form textarea {
+   width: 45%;
+   height: 100%;
    padding-top: 7px;
-   margin: 0;
 }
 
 .contacts-form input[type="submit"] {
@@ -934,9 +1032,22 @@ ul.projects_gallery li:hover p {
    .contacts_button {
       margin-bottom: 5%;
    }
-   .contacts {
+   .contacts_infa {
       margin-bottom: 10%;
    }
+}
+
+@media (max-width: 768px) {
+   .contacts-form {
+      width: 90%;
+   }
+   .contacts-form input[type]:not([type="submit"]) {
+      margin: 0 5% 0% 0;
+      width: 95%;
+   }
+}
+
+@media (max-width: 576px) {
 }
 
 /* Footer */
@@ -962,4 +1073,16 @@ footer {
    font-size: 12px;
    line-height: 150%;
    color: #989898;
+}
+
+@media (max-width: 992px) {
+   .footer-content {
+      width: 75%;
+   }
+}
+
+@media (max-width: 768px) {
+   .footer-content {
+      width: 80%;
+   }
 }

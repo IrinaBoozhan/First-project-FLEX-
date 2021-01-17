@@ -37,7 +37,7 @@
             <a href="#part4" class="nav-link">Партнеры теарта</a>
             <a href="#part5" class="nav-link">Контакты</a>
 
-            <div class="soc">
+            <div class="social">
                <a href="https://www.facebook.com/bolshoitheatre/" target="_blank">
                   <svg width="27" height="45" viewBox="0 0 27 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path
@@ -85,8 +85,8 @@
 
 
 
-   <main>
-      <aside>
+   <section class="main">
+      <section class="contacts">
          <ul>
             <li>
                <a href="#">
@@ -132,16 +132,16 @@
             </li>
          </ul>
          <span>Контактная информация</span>
-      </aside>
+      </section>
       <div class="first-screen">
          <header>
             <nav>
                <ul>
-                  <li><a href="#" class="nav-link">Главная</a></li>
-                  <li><a href="#" class="nav-link">О театре</a></li>
-                  <li><a href="#" class="nav-link">Наши постановки</a></li>
-                  <li><a href="#" class="nav-link">Партнеры теарта</a></li>
-                  <li><a href="#" class="nav-link">Контакты</a></li>
+                  <li><a href="#part" class="nav-link">Главная</a></li>
+                  <li><a href="#part2" class="nav-link">О театре</a></li>
+                  <li><a href="#part3" class="nav-link">Наши постановки</a></li>
+                  <li><a href="#part4" class="nav-link">Партнеры теарта</a></li>
+                  <li><a href="#part5" class="nav-link">Контакты</a></li>
                </ul>
             </nav>
             <span class="phone">+7 495 123-45-67</span>
@@ -168,11 +168,17 @@
             </div>
          </section>
       </div>
-   </main>
+
+   </section>
+
+
+
+
+
 
    <!-- О театре -->
 
-   <section class="about">
+   <section class="about" id="part2">
       <h2><span>о</span> театре</h2>
       <article class="about-content">
          <div class="about-text">
@@ -202,7 +208,7 @@
 
    <!-- Проекты -->
 
-   <section class="projects">
+   <section class="projects" id="part3">
       <h2><span>наши </span>постановки</h2>
       <ul class="projects_gallery">
          <li>
@@ -345,7 +351,7 @@
 
    <!-- Партнеры -->
 
-   <section class="partners">
+   <section class="partners" id="part4">
       <h2><span>партнеры</span> театра</h2>
       <div class="partners_content">
          <div class="gasprom">
@@ -585,7 +591,7 @@
 
    <!-- Контактная форма -->
 
-   <section class="contacts">
+   <section class="contacts_form" id="part5">
       <h2><span>стать</span> меценатом</h2>
       <div class="contacts_content">
          <div class="contacts_info">
@@ -601,10 +607,15 @@
          <div class="contacts-form">
             <form>
                <div class="contacts-text">
-                  <input type="text" placeholder="Имя" tabindex="1">
-                  <input type="tel" placeholder="Телефон" tabindex="2">
-                  <input type="text" placeholder="Компания" tabindex="3">
-                  <input type="email" placeholder="E-mail" tabindex="4">
+                  <div class="name-tel">
+                     <input type="text" placeholder="Имя" tabindex="1">
+                     <input type="tel" placeholder="Телефон" tabindex="2">
+                  </div>
+                  <div class="company-email">
+                     <input type="text" placeholder="Компания" tabindex="3">
+                     <input type="email" placeholder="E-mail" tabindex="4">
+                  </div>
+
                   <textarea name="Сообщение" placeholder="Сообщение" tabindex="5"></textarea>
                </div>
                <div class="contacts_button">
