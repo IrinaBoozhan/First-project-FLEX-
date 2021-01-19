@@ -1033,7 +1033,7 @@ ul.projects_gallery li:hover p {
 
 @media (max-width: 576px) {
    .partners_content {
-      width: 100%;
+      width: 85%;
    }
 
    .partners_content div.gasprom:nth-child(5),
